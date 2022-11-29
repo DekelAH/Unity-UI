@@ -9,6 +9,7 @@ namespace Assets.Scripts.Data_Models
     {
         #region Events
 
+        public event Action<string, string, Sprite, Color, bool> DataChange;
         public event Action<string> NameChange;
         public event Action<string> DescriptionChange;
         public event Action<Sprite> ImageChange;
@@ -38,34 +39,19 @@ namespace Assets.Scripts.Data_Models
 
         #region Methods
 
-        public void SetName(string catName)
+        public void SetData(string nameToChange, string descriptionToChange, Sprite imageTochange, Color color, bool enable)
         {
-            _catName = catName;
-            NameChange?.Invoke(_catName);
-        }
-
-        public void SetInputArea(string description)
-        {
-            _description = description;
-            DescriptionChange?.Invoke(_description);
-        }
-
-        public void SetImage(Sprite image)
-        {
-            _image = image;
-            ImageChange?.Invoke(_image);
-        }
-
-        public void SetColor(Color color)
-        {
+            _catName = nameToChange;
+            _description = descriptionToChange;
+            _image = imageTochange;
             _color = color;
-            ColorChange?.Invoke(_color);
-        }
-
-        public void SetEnable(bool enable)
-        {
             _enable = enable;
-            EnableChange?.Invoke(enable);
+
+            NameChange?.Invoke(_catName);
+            DescriptionChange?.Invoke(_description);
+            ImageChange?.Invoke(_image);
+            ColorChange?.Invoke(_color);
+            EnableChange?.Invoke(_enable);
         }
 
         #endregion
@@ -74,7 +60,7 @@ namespace Assets.Scripts.Data_Models
 
         public string CatName => _catName;
         public string Description => _description;
-        public Sprite Image => _image;
+        public Sprite Qr_code => _image;
         public Color Color => _color;
         public bool Enable => _enable;
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73986f1b714f26a4dbca6bac44996506, type: 3}
   m_Name: Player Model
   m_EditorClassIdentifier: 
-  _catName: Spitz
+  _catName: zz
   _description: skdflsdfklsklfsdlflsdfldslfdsklflsdfsdfdsfdsfdsfdsdsfdsfdsdssdfdsfdsfsdfdsfdsfdsfdsfsdfdsfdsfsdsdf
   _image: {fileID: 21300000, guid: 4db78ed10fd04e640af13957a3420e67, type: 3}
   _color: {r: 0.7924528, g: 0.47242138, b: 0.048593827, a: 1}
