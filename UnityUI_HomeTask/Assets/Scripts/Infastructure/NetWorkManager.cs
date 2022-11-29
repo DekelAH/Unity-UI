@@ -44,7 +44,6 @@ namespace Assets.Scripts.Infastructure
                     var mockData = new MockDataConverter();
                     JsonUtility.FromJsonOverwrite(request.downloadHandler.text, mockData);
                     mockData.SetMockData();
-                    Debug.Log(request.downloadHandler.text);
                 }
             }
         }

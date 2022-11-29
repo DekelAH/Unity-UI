@@ -10,11 +10,6 @@ namespace Assets.Scripts.Data_Models
         #region Events
 
         public event Action<string, string, Sprite, Color, bool> DataChange;
-        public event Action<string> NameChange;
-        public event Action<string> DescriptionChange;
-        public event Action<Sprite> ImageChange;
-        public event Action<Color> ColorChange;
-        public event Action<bool> EnableChange;
 
         #endregion
 
@@ -46,12 +41,7 @@ namespace Assets.Scripts.Data_Models
             _image = imageTochange;
             _color = color;
             _enable = enable;
-
-            NameChange?.Invoke(_catName);
-            DescriptionChange?.Invoke(_description);
-            ImageChange?.Invoke(_image);
-            ColorChange?.Invoke(_color);
-            EnableChange?.Invoke(_enable);
+            DataChange?.Invoke(_catName, _description, _image, _color, _enable);
         }
 
         #endregion
@@ -60,7 +50,7 @@ namespace Assets.Scripts.Data_Models
 
         public string CatName => _catName;
         public string Description => _description;
-        public Sprite Qr_code => _image;
+        public Sprite Image => _image;
         public Color Color => _color;
         public bool Enable => _enable;
 

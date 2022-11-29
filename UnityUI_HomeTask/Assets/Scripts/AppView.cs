@@ -2,6 +2,7 @@ using Assets.Scripts.Infastructure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class AppView : MonoBehaviour
     private Text _nameText;
 
     [SerializeField]
-    private InputField _textArea;
+    private TMP_InputField _textArea;
 
     [SerializeField]
     private Image _image;
@@ -58,40 +59,20 @@ public class AppView : MonoBehaviour
 
     private void SubscribeEvents()
     {
-        PlayerModelProvider.Instance.Get.NameChange += OnNameChanged;
-        PlayerModelProvider.Instance.Get.DescriptionChange += OnDescriptionChanged;
-        PlayerModelProvider.Instance.Get.ImageChange += OnImageChanged;
-        PlayerModelProvider.Instance.Get.ColorChange += OnColorChanged;
-        PlayerModelProvider.Instance.Get.EnableChange += OnEnableChanged;
+        PlayerModelProvider.Instance.Get.DataChange += OnDataChanged;
     }
     private void UnSubscribeEvents()
     {
-        PlayerModelProvider.Instance.Get.NameChange -= OnNameChanged;
-        PlayerModelProvider.Instance.Get.DescriptionChange -= OnDescriptionChanged;
+        PlayerModelProvider.Instance.Get.DataChange -= OnDataChanged;
     }
-    private void OnNameChanged(string name)
+    private void OnDataChanged(string name, string description, Sprite image, Color color, bool enable)
     {
-        _nameText.text = name;
-    }
-
-    private void OnDescriptionChanged(string description)
-    {
-        _textArea.text = description;
-    }
-
-    private void OnImageChanged(Sprite image)
-    {
-        _image.sprite = image;
-    }
-
-    private void OnColorChanged(Color color)
-    {
+        _nameText.text = name; 
+        _textArea.text = description; 
+        _image.sprite = image; 
         _colorImage.color = color;
-    }
-
-    private void OnEnableChanged(bool enable)
-    {
         _enable = enable;
+
         ToggleSwitch(_enable);
     }
 
@@ -99,7 +80,7 @@ public class AppView : MonoBehaviour
     {
         _nameText.text = PlayerModelProvider.Instance.Get.CatName;
         _textArea.text = PlayerModelProvider.Instance.Get.Description;
-        _image.sprite = PlayerModelProvider.Instance.Get.Qr_code;
+        _image.sprite = PlayerModelProvider.Instance.Get.Image;
         _colorImage.color = PlayerModelProvider.Instance.Get.Color;
         _enable = PlayerModelProvider.Instance.Get.Enable;
     }
